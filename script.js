@@ -11,17 +11,34 @@ function getComputerChoice(){
 }
 
 function playRound(playerSelection, computerSelection){
-    if(playerSelection.toLowerCase() == "rock" && computerSelection == "scissor"){
+    if(playerSelection == "rock" && computerSelection == "scissor"){
         return "You Win! Rock beats Scissor";
-    }else if(playerSelection.toLowerCase() == "rock" && computerSelection == "paper"){
+    }else if(playerSelection == "rock" && computerSelection == "paper"){
         return "You Lose! Paper beats Rock";
-    }else if(playerSelection.toLowerCase() == "scissor" && computerSelection == "paper"){
+    }else if(playerSelection == "scissor" && computerSelection == "paper"){
         return "You Win! Scissor beats Paper";
-    }else if(playerSelection.toLowerCase() == "scissor" && computerSelection == "rock"){
+    }else if(playerSelection == "scissor" && computerSelection == "rock"){
         return "You Lose! Rock beats Scissor";
-    }else if(playerSelection.toLowerCase() == "paper" && computerSelection == "rock"){
+    }else if(playerSelection == "paper" && computerSelection == "rock"){
         return "You Win! Paper beats Rock";
-    }else if(playerSelection.toLowerCase() == "paper" && computerSelection == "scissor"){
+    }else if(playerSelection == "paper" && computerSelection == "scissor"){
         return "You Lose! Scissor beats Paper";
-    }else return "It's a Draw!";
+    }else return "It's a Draw!"; // Tie scenario
+}
+
+function game(){
+    let playerPoint = 0;
+    let computerPoint = 0;
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt();
+        playerSelection = playerSelection.toLowerCase();
+        let result = playRound(playerSelection,getComputerChoice());
+        console.log(result);
+        if (result.split(' ').slice(0,2).join(' ') == "You Win!"){
+            playerPoint++;
+        }else computerPoint++;
+    }
+    if (playerPoint > computerPoint){
+        console.log("YOU WIN THE GAME");
+    }else console.log("YOU LOSE THE GAME");
 }
