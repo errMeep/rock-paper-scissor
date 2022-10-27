@@ -42,3 +42,14 @@ function game(){
         console.log("YOU WIN THE GAME");
     }else console.log("YOU LOSE THE GAME");
 }
+
+function logText(e){
+    console.log(this.id);
+}
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach(button => button.addEventListener('click', () => {
+    console.log(playRound(button.id, getComputerChoice()));
+}));
+
+console.log(buttons);
