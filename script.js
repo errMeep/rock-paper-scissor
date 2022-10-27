@@ -52,10 +52,17 @@ function game(){
     let resu = playRound(this.id, getComputerChoice());
     if(resu === true){
         buttons.playerPoint++;
-        document.getElementsByClassName("playerScore")[0].innerHTML = buttons.playerPoint;
+        document.getElementsByClassName("playerScore")[0].innerHTML = `Player: ${buttons.playerPoint}`;
     }else if(resu === false){
         buttons.computerPoint++;
-        document.getElementsByClassName("computerScore")[0].innerHTML = buttons.computerPoint;
+        document.getElementsByClassName("computerScore")[0].innerHTML = `Computer: ${buttons.computerPoint}`;
+    }
+    if(buttons.playerPoint == 5){
+        document.getElementsByClassName("playerScore")[0].innerHTML = "You Win !";
+        document.getElementsByClassName("computerScore")[0].innerHTML = "";
+    }else if(buttons.computerPoint == 5){
+        document.getElementsByClassName("playerScore")[0].innerHTML = "You Lose !";
+        document.getElementsByClassName("computerScore")[0].innerHTML = "";
     }
     
 }
