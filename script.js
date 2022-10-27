@@ -12,21 +12,21 @@ function getComputerChoice(){
 
 function playRound(playerSelection, computerSelection){
     if(playerSelection == "rock" && computerSelection == "scissor"){
-        return "You Win! Rock beats Scissor";
+        return true;
     }else if(playerSelection == "rock" && computerSelection == "paper"){
-        return "You Lose! Paper beats Rock";
+        return false;
     }else if(playerSelection == "scissor" && computerSelection == "paper"){
-        return "You Win! Scissor beats Paper";
+        return true;
     }else if(playerSelection == "scissor" && computerSelection == "rock"){
-        return "You Lose! Rock beats Scissor";
+        return false;
     }else if(playerSelection == "paper" && computerSelection == "rock"){
-        return "You Win! Paper beats Rock";
+        return true;
     }else if(playerSelection == "paper" && computerSelection == "scissor"){
-        return "You Lose! Scissor beats Paper";
+        return false;
     }else return "It's a Draw!"; // Tie scenario
 }
 
-function game(){
+/*function game(){
     let playerPoint = 0;
     let computerPoint = 0;
     for (let i = 0; i < 5; i++) {
@@ -41,15 +41,28 @@ function game(){
     if (playerPoint > computerPoint){
         console.log("YOU WIN THE GAME");
     }else console.log("YOU LOSE THE GAME");
+}*/
+
+
+buttons = document.querySelectorAll("button");
+buttons.computerPoint = 0;
+buttons.playerPoint = 0;
+function game(){
+    let resu = playRound(this.id, getComputerChoice());
+    if(resu){
+        buttons.playerPoint++;
+    }else if(!resu){
+        buttons.computerPoint++;
+    }
+    
 }
 
-function logText(e){
-    console.log(this.id);
-}
 
-const buttons = document.querySelectorAll("button");
-buttons.forEach(button => button.addEventListener('click', () => {
+buttons.forEach(button => button.addEventListener('click', game));
+
+
+/*buttons.forEach(button => button.addEventListener('click', () => {
     console.log(playRound(button.id, getComputerChoice()));
-}));
+}));*/
 
 console.log(buttons);
