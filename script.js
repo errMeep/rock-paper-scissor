@@ -1,5 +1,6 @@
 function getComputerChoice(){
     let selection = Math.floor(Math.random()*3);
+    console.log(selection);
     switch(selection){
         case 0:
             return "rock";
@@ -23,7 +24,7 @@ function playRound(playerSelection, computerSelection){
         return true;
     }else if(playerSelection == "paper" && computerSelection == "scissor"){
         return false;
-    }else return "It's a Draw!"; // Tie scenario
+    }else return "null"; // Tie scenario
 }
 
 /*function game(){
@@ -49,10 +50,12 @@ buttons.computerPoint = 0;
 buttons.playerPoint = 0;
 function game(){
     let resu = playRound(this.id, getComputerChoice());
-    if(resu){
+    if(resu === true){
         buttons.playerPoint++;
-    }else if(!resu){
+        document.getElementsByClassName("playerScore")[0].innerHTML = buttons.playerPoint;
+    }else if(resu === false){
         buttons.computerPoint++;
+        document.getElementsByClassName("computerScore")[0].innerHTML = buttons.computerPoint;
     }
     
 }
